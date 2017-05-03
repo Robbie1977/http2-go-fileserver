@@ -1,0 +1,9 @@
+services:
+  - docker
+  
+script:
+  - docker build -t test-image:test .
+  - docker run -d -ti --name test -p 5000:5000 test-image:test
+  - sleep 1m
+  - docker logs test
+  - curl -sSf https://localhost:5000/
